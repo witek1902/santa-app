@@ -1,0 +1,44 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+ - 6.9.4
+
+branches:
+  only:
+   - master
+
+addons:
+apt:
+  sources:
+   - google-chrome
+  packages:
+   - google-chrome-stable
+
+before_install:
+ - export CHROME_BIN=chromium-browser
+ - export DISPLAY=:99.0
+ - sh -e /etc/init.d/xvfb start
+
+before_script:
+ - npm install -g @angular/cli@1.5.0
+ - npm install -g angular-cli-ghpages
+
+cache:
+  directories:
+   - node_modules
+   - $HOME/.nvm
+
+script:
+ - ng build --env=prod --base-href "https://arturczopek.github.io/santa-app" -aot
+ - ng test --watch=false
+
+after_success:
+ - angular-cli-ghpages --no-silent --repo=https://GH_TOKEN@github.com/arturczopek/santa-app.git
+
+env:
+  global:
+   - secure: "eUu+in86Dj0k0t9S+3/WTFQl6MxbUEVVU2xn906UhehmsIUlk5+dr7vc7jbvBhmAR9p2037k5rkz8Iywb0oLkHlmCYzV/kbF+OCPQ17s6DnKM+w56KI7M+rS3i+yqt/xxL8Z/d5qDjplZiZSl0r4EvZBwXzw41L0Xs2ypWBlL0JUiolrbGcvDd+O/hE4f3Cq79Tw/XAfVNxwh+cLe9a63ioNMDTDMdedRol6zwi0NiprAe0Nd0XXMFXXIi/hBiurE21IjhpBA2f+ipdV6HMxW+5Khk3uZwnwj7Jl0jqmGBidwsAK24btr/PotkEH+n1jiApTwrWV6+GQUwUaiJTs7ilIKCa5Hseki/ek/t9Sx2vdaFQcSmTc9iy5zOhqq34K3V8/ZvqKPdU4kZ59migbnIHgeaKC8mtIsU+EPqqO6hVZxRRA+VSvdnK8Ho36Bue2E45koxSOumv6C1Q1xOyajATBLYdVGQSLxg34N6sp3Ec8TMa+hxDs4BXvjNWhJD7FGplgFpCGP58YmNRt268zFr6wpwp2gQdt2i66wDVLy1i7C/n7En7IA02kd/d+3twtbt1diygPyNtGg5Aczrl1UyH0Wfhgn+K2O8orr+BzX6J6jQPFqWmP1cYNqp6lBu3SKszAZic2Id0z27x5x75u+Dz9RMJv9DE28CIjShV7NZI="
+
+notifications:
+  email: false
