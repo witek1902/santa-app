@@ -11,7 +11,7 @@ import {AuthService} from './service/auth.service';
         <iframe width="460" height="255" src="https://www.youtube.com/embed/z59gAXZ0ksQ" frameborder="0"
                 allowfullscreen></iframe>
         <div class="button-row">
-          <button class="login-page__login-button" mat-raised-button (click)="login()" *ngIf="!(user | async)?.uid">Fb
+          <button class="login-page__login-button" mat-raised-button (click)="login()">Fb
             Login
           </button>
         </div>
