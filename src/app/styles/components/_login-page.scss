@@ -1,0 +1,23 @@
+.login-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.login-page__login-card {
+  align-items: center;
+  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  height: 460px;
+  justify-content: space-around;
+  width: 500px;
+}
+
+.login-page__login-button {
+  color: white !important;
+  background-color: #2775CA;
+}

@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import * as firebase from 'firebase';
+import {AuthService} from './service/auth.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'santa-root',
   template: `
-    <div class="dupa">Ho ho ho</div>
+    <div id="snow"></div>
+    <santa-login *ngIf="!(user | async)?.uid"></santa-login>
+    <santa-main *ngIf="(user | async)?.uid"></santa-main>
   `
 })
-export class AppComponent {
-  title = 'santa';
+export class AppComponent implements OnInit {
+
+  user: Observable<firebase.User>;
+
+  constructor(private authService: AuthService) {
+  }
+
+  ngOnInit() {
+    this.user = this.authService.getUser();
+  }
 }

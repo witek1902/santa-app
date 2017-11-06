@@ -1,31 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {LoginComponent} from './login.component';
+import {MainComponent} from './main-panel/main.component';
+import {AuthService} from './service/auth.service';
+import {MarketService} from './service/market.service';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatButtonModule, MatCardModule} from "@angular/material";
 
 export const firebaseConfig = {
-  apiKey: '',
-  authDomain: '',
-  databaseURL: '',
-  storageBucket: '',
-  messagingSenderId: ''
+  apiKey: environment.apiKey,
+  authDomain: environment.authDomain,
+  databaseURL: environment.databaseURL,
+  projectId: environment.projectId,
+  storageBucket: environment.storageBucket,
+  messagingSenderId: environment.messagingSenderId
 };
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    MarketService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
 
