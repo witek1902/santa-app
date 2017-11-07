@@ -8,7 +8,6 @@ import {AuthService} from './service/auth.service';
   selector: 'santa-root',
   template: `
     <div id="snow"></div>
-    <santa-fork></santa-fork>
     <santa-login *ngIf="!(user | async)?.uid"></santa-login>
     <santa-main *ngIf="(user | async)?.uid"></santa-main>
   `

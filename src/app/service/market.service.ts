@@ -9,8 +9,8 @@ export class MarketService {
 
   }
 
-  getMarkets(): Observable<Market[]> {
-    const marketsCol: AngularFirestoreCollection<Market> = this.afs.collection('markets');
+  getMarkets(): Observable<Draw[]> {
+    const marketsCol: AngularFirestoreCollection<Draw> = this.afs.collection('draws');
     return marketsCol.valueChanges();
   }
 }

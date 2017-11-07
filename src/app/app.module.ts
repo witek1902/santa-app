@@ -8,7 +8,6 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {LoginComponent} from './login.component';
 import {AuthService} from './service/auth.service';
 import {MarketService} from './service/market.service';
-import {ForkMeComponent} from './fork-me.component';
 import {MaterializeModule} from 'angular2-materialize';
 import {MainModule} from './main-panel/main.module';
 
@@ -24,7 +23,6 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    ForkMeComponent,
     LoginComponent,
   ],
   imports: [

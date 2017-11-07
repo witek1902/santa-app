@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../service/auth.service';
-import * as firebase from 'firebase';
 import {Observable} from 'rxjs/Observable';
 import {MarketService} from '../service/market.service';
 
@@ -8,23 +7,24 @@ import {MarketService} from '../service/market.service';
   selector: 'santa-main',
   template: `
     <santa-header></santa-header>
-    <ul *ngFor="let market of markets | async">
-      <li>
-        <strong>{{ market.name}}</strong>
-        <br>
-        {{market.description}}
-      </li>
-    </ul>
+    <santa-draws></santa-draws>
+    <!--<ul *ngFor="let market of markets | async">-->
+      <!--<li>-->
+        <!--<strong>{{ market.name}}</strong>-->
+        <!--<br>-->
+        <!--{{market.description}}-->
+      <!--</li>-->
+    <!--</ul>-->
   `
 })
 export class MainComponent implements OnInit {
 
-  markets: Observable<Market[]>;
+  draws: Observable<Draw[]>;
 
   constructor(private authService: AuthService, private marketService: MarketService) {
   }
 
   ngOnInit() {
-    this.markets = this.marketService.getMarkets();
+    this.draws = this.marketService.getMarkets();
   }
 }

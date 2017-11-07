@@ -5,7 +5,15 @@
 
 
 body {
-  background-color: #2196f3;
+  background-color: $main-color;
+}
+
+::selection {
+  background: $main-lighten-color;
+}
+
+::-moz-selection {
+  background: $main-lighten-color;
 }
 
 #snow {
