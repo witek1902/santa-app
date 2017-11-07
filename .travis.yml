@@ -4,7 +4,6 @@ language: node_js
 node_js:
  - 6.9.4
 
-
 branches:
   only:
    - master
@@ -22,7 +21,7 @@ before_install:
  - sh -e /etc/init.d/xvfb start
 
 before_script:
- - npm install -g @angular/cli@1.0.0
+ - npm install -g @angular/cli@1.5.0
  - npm install -g angular-cli-ghpages
 
 cache:
@@ -31,7 +30,7 @@ cache:
    - $HOME/.nvm
 
 script:
- - ng build --env=prod --base-href "https://arturczopek.github.io/santa-app" -aot
+ - ng build --base-href "https://arturczopek.github.io/santa-app" -aot
  - ng test --watch=false
 
 after_success:
