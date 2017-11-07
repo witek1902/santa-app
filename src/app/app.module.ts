@@ -6,12 +6,11 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {LoginComponent} from './login.component';
-import {MainComponent} from './main-panel/main.component';
 import {AuthService} from './service/auth.service';
 import {MarketService} from './service/market.service';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatCardModule} from "@angular/material";
-import {ForkMeComponent} from "./fork-me.component";
+import {ForkMeComponent} from './fork-me.component';
+import {MaterializeModule} from 'angular2-materialize';
+import {MainModule} from './main-panel/main.module';
 
 export const firebaseConfig = {
   apiKey: environment.apiKey,
@@ -27,16 +26,14 @@ export const firebaseConfig = {
     AppComponent,
     ForkMeComponent,
     LoginComponent,
-    MainComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatButtonModule
+    MaterializeModule,
+    MainModule
   ],
   providers: [
     AuthService,
