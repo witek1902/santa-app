@@ -11,6 +11,7 @@ import {AuthService} from './service/auth.service';
 import {MarketService} from './service/market.service';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule, MatCardModule} from "@angular/material";
+import {ForkMeComponent} from "./fork-me.component";
 
 export const firebaseConfig = {
   apiKey: environment.apiKey,
@@ -24,6 +25,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    ForkMeComponent,
     LoginComponent,
     MainComponent
   ],
