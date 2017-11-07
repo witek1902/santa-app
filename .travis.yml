@@ -31,7 +31,7 @@ cache:
    - $HOME/.nvm
 
 script:
- - ng build --base-href "https://arturczopek.github.io/santa-app" -aot
+ - ng build --base-href "https://arturczopek.github.io/santa-app/" -aot
 
 after_success:
  - angular-cli-ghpages --no-silent --repo=https://GH_TOKEN@github.com/arturczopek/santa-app.git
