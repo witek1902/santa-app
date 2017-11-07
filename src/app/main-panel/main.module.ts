@@ -6,9 +6,13 @@ import {NgModule} from '@angular/core';
 import {DrawsComponent} from './draws.component';
 import {DrawsListComponent} from './draws-list.component';
 import {DrawCardComponent} from './draw-card.component';
+import {CardTagsComponent} from './card-tags.component';
+import {CardActionsComponent} from './card-actions.component';
 
 @NgModule({
   declarations: [
+    CardActionsComponent,
+    CardTagsComponent,
     DrawCardComponent,
     DrawsComponent,
     DrawsListComponent,

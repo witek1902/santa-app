@@ -12,24 +12,21 @@ import {Observable} from 'rxjs/Observable';
           <div class="card-content black-text">
         <span class="card-title">
           {{draw.name}}
-          <span *ngIf="isActive()" class="new badge blue" data-badge-caption="ACTIVE"></span>
-          <span *ngIf="isFinished()" class="new badge red" data-badge-caption="FINISHED"></span>
-          <span *ngIf="draw.owner === (user | async).uid" class="new badge pink" data-badge-caption="OWNER"></span>
-          <span *ngIf="draw.participants.indexOf((user | async).uid) > -1" class="new badge green"
-                data-badge-caption="PARTICIPATE"></span>
+          <santa-card-tags
+            [isActive]="isActive()"
+            [isFinished]="isFinished()"
+            [isOwner]="draw.owner === (user | async).uid"
+            [isParticipant]="draw.participants.indexOf((user | async).uid) > -1"
+          ></santa-card-tags>
         </span>
             <p>{{draw.description}}</p>
           </div>
-          <div class="card-action">
-            <a *ngIf="isActive() && draw.participants.indexOf((user | async).uid) < 0" href=""
-               class="red-text darken-1">Join</a>
-            <a *ngIf="isActive() && draw.owner === (user | async).uid" href=""
-               class="red-text darken-1">Draw!</a>
-            <a *ngIf="draw.participants.indexOf((user | async).uid) > -1" href=""
-               class="red-text darken-1">Show participants</a>
-            <a *ngIf="draw.participants.indexOf((user | async).uid) > -1 && isFinished()" href=""
-               class="red-text darken-1">Show your winner</a>
-          </div>
+          <santa-card-actions
+            [canJoin]="isActive() && draw.participants.indexOf((user | async).uid) < 0"
+            [canDraw]="isActive() && draw.owner === (user | async).uid"
+            [canSeeParticipants]="draw.participants.indexOf((user | async).uid) > -1"
+            [canSeeWinner]="draw.participants.indexOf((user | async).uid) > -1 && isFinished()"
+          ></santa-card-actions>
         </div>
       </div>
     </div>
