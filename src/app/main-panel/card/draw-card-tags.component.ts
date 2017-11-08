@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'santa-card-tags',
+  selector: 'santa-draw-card-tags',
   template: `
     <span *ngIf="isActive" class="new badge blue" data-badge-caption="ACTIVE"></span>
     <span *ngIf="isFinished" class="new badge red" data-badge-caption="FINISHED"></span>

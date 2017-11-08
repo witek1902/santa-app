@@ -5,9 +5,13 @@ import {MaterializeModule} from 'angular2-materialize';
 import {NgModule} from '@angular/core';
 import {DrawsComponent} from './draws.component';
 import {DrawsListComponent} from './draws-list.component';
-import {DrawCardComponent} from './draw-card.component';
-import {CardTagsComponent} from './card-tags.component';
-import {CardActionsComponent} from './card-actions.component';
+import {DrawCardComponent} from './card/draw-card.component';
+import {CardTagsComponent} from './card/draw-card-tags.component';
+import {CardActionsComponent} from './card/draw-card-actions.component';
+import {FabButtonComponent} from './fab-button.component';
+import {JoinModalComponent} from './modals/join-modal.component';
+import {ModalsComponent} from './modals/modals.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import {CardActionsComponent} from './card-actions.component';
     DrawCardComponent,
     DrawsComponent,
     DrawsListComponent,
+    FabButtonComponent,
     HeaderComponent,
-    MainComponent
+    JoinModalComponent,
+    MainComponent,
+    ModalsComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MaterializeModule,
   ],
   exports: [

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AuthService} from '../service/auth.service';
+import {AuthService} from '../../service/auth.service';
 import * as firebase from 'firebase';
 import {Observable} from 'rxjs/Observable';
 
@@ -12,21 +12,22 @@ import {Observable} from 'rxjs/Observable';
           <div class="card-content black-text">
         <span class="card-title">
           {{draw.name}}
-          <santa-card-tags
+          <santa-draw-card-tags
             [isActive]="isActive()"
             [isFinished]="isFinished()"
-            [isOwner]="draw.owner === (user | async).uid"
-            [isParticipant]="draw.participants.indexOf((user | async).uid) > -1"
-          ></santa-card-tags>
+            [isOwner]="draw.owner === (user | async)?.uid"
+            [isParticipant]="draw.participants.indexOf((user | async)?.uid) > -1"
+          ></santa-draw-card-tags>
         </span>
             <p>{{draw.description}}</p>
           </div>
-          <santa-card-actions
-            [canJoin]="isActive() && draw.participants.indexOf((user | async).uid) < 0"
-            [canDraw]="isActive() && draw.owner === (user | async).uid"
-            [canSeeParticipants]="draw.participants.indexOf((user | async).uid) > -1"
-            [canSeeWinner]="draw.participants.indexOf((user | async).uid) > -1 && isFinished()"
-          ></santa-card-actions>
+          <santa-draw-card-actions
+            [canJoin]="isActive() && draw.participants.indexOf((user | async)?.uid) < 0"
+            [canDraw]="isActive() && draw.owner === (user | async)?.uid"
+            [canSeeParticipants]="draw.participants.indexOf((user | async)?.uid) > -1"
+            [canSeeWinner]="draw.participants.indexOf((user | async)?.uid) > -1 && isFinished()"
+            [draw]="draw"
+          ></santa-draw-card-actions>
         </div>
       </div>
     </div>

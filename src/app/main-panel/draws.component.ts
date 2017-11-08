@@ -30,7 +30,7 @@ export class DrawsComponent {
       participants: ['qrGjDRcyfFhozeh6BXvcwFRpruk1', 'xexe'], status: 'ACTIVE'
     },
     {
-      id: 5, name: 'Mock3', description: 'Mock3', owner: 'qrGjDRcyfFhozeh6BXvcwFRpruk1',
+      id: 5, name: 'Wielki mecz 2017', description: 'Mock3', owner: 'qrGjDRcyfFhozeh6BXvcwFRpruk1',
       participants: ['xoxox', 'xexex', 'qrGjDRcyfFhozeh6BXvcwFRpruk1'], status: 'FINISHED'
     },
     {

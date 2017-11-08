@@ -8,12 +8,14 @@ import {MarketService} from '../service/market.service';
   template: `
     <santa-header></santa-header>
     <santa-draws></santa-draws>
+    <santa-fab-button></santa-fab-button>
+    <santa-modals></santa-modals>
     <!--<ul *ngFor="let market of markets | async">-->
-      <!--<li>-->
-        <!--<strong>{{ market.name}}</strong>-->
-        <!--<br>-->
-        <!--{{market.description}}-->
-      <!--</li>-->
+    <!--<li>-->
+    <!--<strong>{{ market.name}}</strong>-->
+    <!--<br>-->
+    <!--{{market.description}}-->
+    <!--</li>-->
     <!--</ul>-->
   `
 })

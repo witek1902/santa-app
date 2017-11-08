@@ -1,0 +1,16 @@
+/*Styles for materialize forms*/
+
+/* label focus color */
+.input-field input:focus + label {
+  color: $secondary-color;
+}
+
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid $secondary-color;
+  box-shadow: 0 1px 0 0 $secondary-color;
+}
+
+.input-field .prefix.active {
+  color: $secondary-color;
+}

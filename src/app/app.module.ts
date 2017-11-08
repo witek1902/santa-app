@@ -10,6 +10,7 @@ import {AuthService} from './service/auth.service';
 import {MarketService} from './service/market.service';
 import {MaterializeModule} from 'angular2-materialize';
 import {MainModule} from './main-panel/main.module';
+import {ModalsStream} from "./main-panel/modals/modals.stream";
 
 export const firebaseConfig = {
   apiKey: environment.apiKey,
@@ -35,7 +36,8 @@ export const firebaseConfig = {
   ],
   providers: [
     AuthService,
-    MarketService
+    MarketService,
+    ModalsStream
   ],
   bootstrap: [AppComponent]
 })

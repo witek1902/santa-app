@@ -8,12 +8,22 @@ body {
   background-color: $main-color;
 }
 
+a {
+  cursor: pointer;
+}
+
 ::selection {
   background: $main-lighten-color;
 }
 
 ::-moz-selection {
   background: $main-lighten-color;
+}
+
+@media (min-width: 769px) {
+  .modal {
+    width: 35vw;
+  }
 }
 
 #snow {
