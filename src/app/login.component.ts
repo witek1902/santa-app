@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AuthService} from './service/auth.service';
+
+declare var $: any;
 
 @Component({
   selector: 'santa-login',
@@ -7,8 +9,9 @@ import {AuthService} from './service/auth.service';
     <div class="login-page">
       <div class="login-page__login-card grey lighten-2">
         <h1 class="mat-display-3" style="margin-bottom: 0;">Santa App</h1>
-        <iframe width="400" height="255" src="https://www.youtube.com/embed/z59gAXZ0ksQ" frameborder="0"
-                allowfullscreen></iframe>
+        <iframe style="width: 98%;" width="400" height="255" frameborder="0" allowfullscreen
+                src="https://www.youtube.com/embed/z59gAXZ0ksQ?rel=0&showinfo=0&autoplay=1"
+        ></iframe>
         <div class="button-row">
           <a class="waves-effect waves-light btn-large social facebook" (click)="login()">
             <i class="fa fa-facebook"></i> Sign in with facebook</a>
@@ -17,12 +20,17 @@ import {AuthService} from './service/auth.service';
     </div>
   `
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements AfterViewInit {
 
   constructor(private authService: AuthService) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      $('#snow').css('height', '100%');
+      const snowHeight = $('body').height();
+      $('#snow').css('height', snowHeight);
+    });
   }
 
   login() {

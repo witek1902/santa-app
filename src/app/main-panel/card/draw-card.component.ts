@@ -1,13 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth.service';
 import * as firebase from 'firebase';
 import {Observable} from 'rxjs/Observable';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'santa-draw-card',
   template: `
     <div class="row">
-      <div class="col s10 offset-s1">
+      <div class="col xl10 offset-xl1 l12">
         <div class="card small blue lighten-5">
           <div class="card-content black-text">
         <span class="card-title">
@@ -34,17 +35,15 @@ import {Observable} from 'rxjs/Observable';
   `
 })
 export class DrawCardComponent implements OnInit {
-  user: Observable<firebase.User>;
   @Input() draw: Draw;
+
+  user: Observable<firebase.User>;
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
-    this.user.subscribe(
-      user => console.log(user.uid)
-    );
   }
 
   public isActive() {

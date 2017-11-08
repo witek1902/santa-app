@@ -1,16 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
+import {AuthService} from "../../service/auth.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
-  selector: 'santa-join-modal',
+  selector: 'santa-draw-modal',
   template: `
-    <div id="join-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
+    <div id="draw-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
          [materializeActions]="modalActions">
       <div class="modal-content">
         <div class="row">
           <div class="col s12">
             <h4>{{draw?.name}}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <p>To draw, please, pass a password</p>
           </div>
         </div>
         <div class="row">
@@ -22,8 +29,8 @@ import {BaseModal} from './base-modal.component';
             </div>
             <div class="col s12">
               <p>
-                <input type="checkbox" id="showJoinPassword" name="showJoinPassword" [(ngModel)]="showPassword"/>
-                <label for="showJoinPassword">Show Password</label>
+                <input type="checkbox" id="showDrawPassword" name="showDrawPassword" [(ngModel)]="showPassword"/>
+                <label for="showDrawPassword">Show Password</label>
               </p>
             </div>
           </form>
@@ -40,18 +47,17 @@ import {BaseModal} from './base-modal.component';
         </div>
       </div>
       <div class="modal-footer">
-        <a class="modal-action waves-effect waves-blue btn-flat" (click)="joinToDraw()">Join</a>
+        <a class="modal-action waves-effect waves-blue btn-flat" (click)="drawPairs()">Draw</a>
         <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
       </div>
     </div>
   `
 })
-export class JoinModalComponent extends BaseModal implements OnInit {
+export class DrawModalComponent extends BaseModal implements OnInit {
 
   public draw: Draw;
   public password = '';
   public showPassword = false;
-
 
   constructor(private modalsStream: ModalsStream) {
     super();
@@ -59,7 +65,7 @@ export class JoinModalComponent extends BaseModal implements OnInit {
 
   ngOnInit(): void {
     super.ngOnInit();
-    this.openModal$ = this.modalsStream.getJoinModalStream().subscribe(
+    this.openModal$ = this.modalsStream.getDrawModalStream().subscribe(
       draw => {
         this.draw = draw;
         this.password = '';
@@ -69,8 +75,8 @@ export class JoinModalComponent extends BaseModal implements OnInit {
     );
   }
 
-  public joinToDraw() {
-    this.successMessage = `You have successfully joined to draw ${this.draw.name}`;
+  public drawPairs() {
+    this.successMessage = `You have successfully drawed pairs in ${this.draw.name}`;
     setTimeout(() => this.closeModal(), 2000);
   }
 }

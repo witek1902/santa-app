@@ -11,20 +11,26 @@ import {CardActionsComponent} from './card/draw-card-actions.component';
 import {FabButtonComponent} from './fab-button.component';
 import {JoinModalComponent} from './modals/join-modal.component';
 import {ModalsComponent} from './modals/modals.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
+import {DrawModalComponent} from './modals/draw-modal.component';
+import {ParticipantsModalComponent} from './modals/participants-modal.component';
+import {WinnerModalComponent} from './modals/winner-modal.component';
 
 @NgModule({
   declarations: [
     CardActionsComponent,
     CardTagsComponent,
     DrawCardComponent,
+    DrawModalComponent,
     DrawsComponent,
     DrawsListComponent,
     FabButtonComponent,
     HeaderComponent,
     JoinModalComponent,
     MainComponent,
-    ModalsComponent
+    ModalsComponent,
+    ParticipantsModalComponent,
+    WinnerModalComponent
   ],
   imports: [
     CommonModule,
