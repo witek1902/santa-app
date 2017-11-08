@@ -9,11 +9,13 @@ import {BaseModal} from './base-modal.component';
          [materializeActions]="modalActions">
       <div class="modal-content">
         <h4>{{draw?.name}}</h4>
-          <iframe *ngIf="showWow" style="width: 100%;" height="315" width="420" frameborder="0"
-                  src="https://www.youtube.com/embed/iXgvXuZF_yk?rel=0&controls=0&showinfo=0&autoplay=1"
-          ></iframe>
-            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <b class="title">Some winner guy</b>
+        <iframe *ngIf="showWow" style="width: 100%;" height="315" width="420" frameborder="0"
+                src="https://www.youtube.com/embed/iXgvXuZF_yk?rel=0&controls=0&showinfo=0&autoplay=1"
+        ></iframe>
+        <div class="winner-modal__winner-title ">
+          <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+          <p>Some winner guy</p>
+        </div>
       </div>
       <div class="modal-footer">
         <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>

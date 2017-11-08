@@ -15,6 +15,8 @@ import {FormsModule} from '@angular/forms';
 import {DrawModalComponent} from './modals/draw-modal.component';
 import {ParticipantsModalComponent} from './modals/participants-modal.component';
 import {WinnerModalComponent} from './modals/winner-modal.component';
+import {NewDrawModalComponent} from './modals/new-draw-modal.component';
+import {VideoModalComponent} from './modals/video-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +29,12 @@ import {WinnerModalComponent} from './modals/winner-modal.component';
     FabButtonComponent,
     HeaderComponent,
     JoinModalComponent,
+    NewDrawModalComponent,
     MainComponent,
     ModalsComponent,
     ParticipantsModalComponent,
-    WinnerModalComponent
+    WinnerModalComponent,
+    VideoModalComponent
   ],
   imports: [
     CommonModule,

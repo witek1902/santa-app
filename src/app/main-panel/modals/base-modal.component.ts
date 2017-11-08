@@ -38,5 +38,4 @@ export abstract class BaseModal implements OnInit, OnDestroy {
     this.modalActions.emit({action: 'modal', params: ['close']});
     $('.modal-overlay').remove();
   }
-
 }

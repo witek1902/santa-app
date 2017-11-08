@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AuthService} from './service/auth.service';
+import {SnowService} from "./service/snow.service";
 
 declare var $: any;
 
@@ -22,15 +23,11 @@ declare var $: any;
 })
 export class LoginComponent implements AfterViewInit {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private snowService: SnowService) {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      $('#snow').css('height', '100%');
-      const snowHeight = $('body').height();
-      $('#snow').css('height', snowHeight);
-    });
+    this.snowService.updateSnow();
   }
 
   login() {

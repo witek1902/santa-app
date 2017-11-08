@@ -1,0 +1,16 @@
+.winner-modal__winner-title {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  justify-content: center;
+
+  img {
+    width: 70px;
+  }
+
+  p {
+    font-size: 30px;
+    margin-left: 30px;
+  }
+}

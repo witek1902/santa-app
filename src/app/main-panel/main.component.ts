@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AuthService} from '../service/auth.service';
 import {Observable} from 'rxjs/Observable';
 import {MarketService} from '../service/market.service';
+import {SnowService} from "../service/snow.service";
+
 
 @Component({
   selector: 'santa-main',
@@ -19,14 +21,20 @@ import {MarketService} from '../service/market.service';
     <!--</ul>-->
   `
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
 
   draws: Observable<Draw[]>;
 
-  constructor(private authService: AuthService, private marketService: MarketService) {
+  constructor(private authService: AuthService, private marketService: MarketService, private snowService: SnowService) {
   }
 
   ngOnInit() {
     this.draws = this.marketService.getMarkets();
+  }
+
+  ngAfterViewInit(): void {
+    window.onresize = () => {
+      this.snowService.updateSnow();
+    };
   }
 }

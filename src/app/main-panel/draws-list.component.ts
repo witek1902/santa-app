@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
+import {SnowService} from '../service/snow.service';
 
 declare var $: any;
 
@@ -19,11 +20,11 @@ export class DrawsListComponent implements AfterViewInit {
   @Input() title = '';
   @Input() draws: Draw[] = [];
 
+  constructor(private snowService: SnowService) {
+  }
+
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      $('#snow').css('height', '100%');
-      const snowHeight = $('body').height();
-      $('#snow').css('height', snowHeight);
-    });
+    this.snowService.updateSnow();
+
   }
 }

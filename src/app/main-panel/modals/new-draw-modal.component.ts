@@ -1,27 +1,30 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
-import {AuthService} from "../../service/auth.service";
-import {Observable} from "rxjs/Observable";
+import {ModalsStream} from './modals.stream';
 
 @Component({
-  selector: 'santa-draw-modal',
+  selector: 'santa-new-draw-modal',
   template: `
-    <div id="draw-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
+    <div id="new-draw-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
          [materializeActions]="modalActions">
       <div class="modal-content">
         <div class="row">
           <div class="col s12">
-            <h4>{{draw?.name}}</h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <p>To draw, please, pass a password</p>
+            <h4>Create draw</h4>
           </div>
         </div>
         <div class="row">
           <form materialize>
+            <div class="input-field col s12">
+              <input id="name" type="text"
+                     [(ngModel)]="name" name="name">
+              <label for="name">Name</label>
+            </div>
+            <div class="input-field col s12">
+              <textarea id="description" type="text" class="materialize-textarea"
+                        [(ngModel)]="description" name="description"></textarea>
+              <label for="description">Description</label>
+            </div>
             <div class="input-field col s12">
               <input id="password" [type]="(showPassword) ? 'text' : 'password'"
                      [(ngModel)]="password" name="password">
@@ -29,8 +32,8 @@ import {Observable} from "rxjs/Observable";
             </div>
             <div class="col s12">
               <p>
-                <input type="checkbox" id="showDrawPassword" name="showDrawPassword" [(ngModel)]="showPassword"/>
-                <label for="showDrawPassword">Show Password</label>
+                <input type="checkbox" id="showNewPassword" name="showNewPassword" [(ngModel)]="showPassword"/>
+                <label for="showNewPassword">Show Password</label>
               </p>
             </div>
           </form>
@@ -47,15 +50,15 @@ import {Observable} from "rxjs/Observable";
         </div>
       </div>
       <div class="modal-footer">
-        <a class="modal-action waves-effect waves-blue btn-flat" (click)="drawPairs()">Draw</a>
+        <a class="modal-action waves-effect waves-blue btn-flat" (click)="createNewDraw()">Create</a>
         <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
       </div>
     </div>
   `
 })
-export class DrawModalComponent extends BaseModal implements OnInit {
-
-  public draw: Draw;
+export class NewDrawModalComponent extends BaseModal implements OnInit {
+  public name = '';
+  public description = '';
   public password = '';
   public showPassword = false;
 
@@ -65,9 +68,10 @@ export class DrawModalComponent extends BaseModal implements OnInit {
 
   ngOnInit(): void {
     super.ngOnInit();
-    this.openModal$ = this.modalsStream.getDrawModalStream().subscribe(
-      draw => {
-        this.draw = draw;
+    this.openModal$ = this.modalsStream.getNewDrawModalStream().subscribe(
+      () => {
+        this.name = '';
+        this.description = '';
         this.password = '';
         this.showPassword = false;
         this.openModal();
@@ -75,8 +79,8 @@ export class DrawModalComponent extends BaseModal implements OnInit {
     );
   }
 
-  public drawPairs() {
-    this.successMessage = `You have successfully drawed pairs in ${this.draw.name}`;
+  public createNewDraw() {
+    this.successMessage = `You have successfully created ${this.name} draw`;
     setTimeout(() => this.closeModal(), 2000);
   }
 }

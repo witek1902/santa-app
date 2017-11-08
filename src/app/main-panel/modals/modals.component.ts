@@ -7,6 +7,8 @@ import {Component} from '@angular/core';
     <santa-draw-modal></santa-draw-modal>
     <santa-participants-modal></santa-participants-modal>
     <santa-winner-modal></santa-winner-modal>
+    <santa-new-draw-modal></santa-new-draw-modal>
+    <santa-video-modal></santa-video-modal>
   `
 })
 export class ModalsComponent {

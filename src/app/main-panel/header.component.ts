@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import * as firebase from 'firebase';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from '../service/auth.service';
+import {ModalsStream} from './modals/modals.stream';
 
 declare var $: any;
 
@@ -9,11 +10,12 @@ declare var $: any;
   selector: 'santa-header',
   template: `
     <div class="navbar-fixed">
-            <nav>
+      <nav>
         <div class="nav-wrapper red darken-1">
           <a href="#" class="brand-logo">Santa App</a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="https://github.com/arturczopek/santa-app" target="_blank">Check app <i class="fa fa-github"></i></a></li>
+            <li><a href="https://github.com/arturczopek/santa-app" target="_blank">Check app <i
+              class="fa fa-github"></i></a></li>
             <li><a (click)="showSantaModal()">Show me santa!</a></li>
             <li>
               <a class="dropdown-button" data-activates="user-dropdown">
@@ -34,7 +36,7 @@ declare var $: any;
 export class HeaderComponent implements OnInit, AfterViewInit {
   user: Observable<firebase.User>;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private modalsStream: ModalsStream) {
   }
 
   ngOnInit() {
@@ -47,7 +49,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   showSantaModal() {
-    console.log('not implemented');
+    this.modalsStream.showVideoModal();
   }
 
   logout() {

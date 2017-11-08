@@ -16,7 +16,7 @@ import {BaseModal} from './base-modal.component';
         <div class="row">
           <form materialize>
             <div class="input-field col s12">
-              <input id="password" [type]="(showPassword) ? 'text' : 'password'" class="validate"
+              <input id="password" [type]="(showPassword) ? 'text' : 'password'"
                      [(ngModel)]="password" name="password">
               <label for="password">Password</label>
             </div>
@@ -51,7 +51,6 @@ export class JoinModalComponent extends BaseModal implements OnInit {
   public draw: Draw;
   public password = '';
   public showPassword = false;
-
 
   constructor(private modalsStream: ModalsStream) {
     super();

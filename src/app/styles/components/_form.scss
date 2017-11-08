@@ -14,3 +14,12 @@
 .input-field .prefix.active {
   color: $secondary-color;
 }
+
+textarea:focus {
+  border-bottom: 1px solid $secondary-color;
+  box-shadow: 0 1px 0 0 $secondary-color;
+}
+
+textarea:focus + label {
+  color: $secondary-color;
+}
