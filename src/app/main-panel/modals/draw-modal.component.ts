@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
 import {Draw} from '../../model/draw.interface';
+import {DrawService} from "../../service/draw.service";
 
 @Component({
   selector: 'santa-draw-modal',
@@ -58,7 +59,7 @@ export class DrawModalComponent extends BaseModal implements OnInit {
   public password = '';
   public showPassword = false;
 
-  constructor(private modalsStream: ModalsStream) {
+  constructor(private modalsStream: ModalsStream, private drawService: DrawService) {
     super();
   }
 
@@ -75,7 +76,15 @@ export class DrawModalComponent extends BaseModal implements OnInit {
   }
 
   public drawPairs() {
-    this.successMessage = `You have successfully drawed pairs in ${this.draw.name}`;
-    setTimeout(() => this.closeModal(), 2000);
+    const drawed = this.drawService.startDraw(this.draw, this.password);
+
+    if (drawed) {
+      this.errorMessage = '';
+      this.successMessage = `You have successfully drawed pairs in ${this.draw.name}`;
+      setTimeout(() => this.closeModal(), 2000);
+    } else {
+      this.successMessage = '';
+      this.errorMessage = `Cannot draw for ${this.draw.name}`;
+    }
   }
 }

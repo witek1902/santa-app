@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
 import {Draw} from '../../model/draw.interface';
+import {UserEntry} from "../../model/user-entry.interface";
+import {DrawService} from "../../service/draw.service";
 
 @Component({
   selector: 'santa-winner-modal',
@@ -14,8 +16,8 @@ import {Draw} from '../../model/draw.interface';
                 src="https://www.youtube.com/embed/iXgvXuZF_yk?rel=0&controls=0&showinfo=0&autoplay=1"
         ></iframe>
         <div class="winner-modal__winner-title ">
-          <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-          <p>Some winner guy</p>
+          <img [src]="winner?.photoURL" alt="" class="circle">
+          <p>{{winner?.displayName}}</p>
         </div>
       </div>
       <div class="modal-footer">
@@ -28,8 +30,9 @@ export class WinnerModalComponent extends BaseModal implements OnInit {
 
   public draw: Draw;
   public showWow = false;
+  public winner: UserEntry;
 
-  constructor(private modalsStream: ModalsStream) {
+  constructor(private modalsStream: ModalsStream, private drawService: DrawService) {
     super();
   }
 
@@ -47,6 +50,7 @@ export class WinnerModalComponent extends BaseModal implements OnInit {
   openModal() {
     super.openModal();
     this.showWow = true;
+    this.drawService.getWinner(this.draw).then(winner => this.winner = winner);
   }
 
   closeModal() {
