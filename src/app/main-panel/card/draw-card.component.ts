@@ -8,7 +8,7 @@ import {Draw} from '../../model/draw.interface';
   selector: 'santa-draw-card',
   template: `
     <div class="row">
-      <div class="col xl10 offset-xl1 l12">
+      <div class="col xl10 offset-xl1 s12">
         <div class="card small blue lighten-5">
           <div class="card-content black-text">
         <span class="card-title">
