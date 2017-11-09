@@ -12,11 +12,12 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(
       user => {
-        this.userEntry = {
-          uid: user.uid,
-          displayName: user.displayName,
-          photoURL: user.photoURL
-        };
+        if (user.uid && user.displayName && user.photoURL) {
+          const {uid, displayName, photoURL} = user;
+          this.userEntry = {uid, displayName, photoURL};
+        } else {
+          this.userEntry = null;
+        }
       }
     );
   }
@@ -33,7 +34,6 @@ export class AuthService {
 
   public logout() {
     this.afAuth.auth.signOut();
-    this.userEntry = null;
   }
 
   public getCurrentUserEntry(): UserEntry {
