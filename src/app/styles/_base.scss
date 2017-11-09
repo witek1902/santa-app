@@ -3,9 +3,14 @@
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
 
 body {
   background-color: $main-color;
+  min-height: 100%;
+
 }
 
 a {

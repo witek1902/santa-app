@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
+import {Draw} from '../../model/draw.interface';
+import {DrawService} from "../../service/draw.service";
 
 @Component({
   selector: 'santa-join-modal',
@@ -52,7 +54,7 @@ export class JoinModalComponent extends BaseModal implements OnInit {
   public password = '';
   public showPassword = false;
 
-  constructor(private modalsStream: ModalsStream) {
+  constructor(private modalsStream: ModalsStream, private drawService: DrawService) {
     super();
   }
 
@@ -69,7 +71,14 @@ export class JoinModalComponent extends BaseModal implements OnInit {
   }
 
   public joinToDraw() {
-    this.successMessage = `You have successfully joined to draw ${this.draw.name}`;
-    setTimeout(() => this.closeModal(), 2000);
+    const joined = this.drawService.joinToDraw(this.draw, this.password);
+    if (joined) {
+      this.successMessage = `You have successfully joined to draw ${this.draw.name}`;
+      this.errorMessage = '';
+      setTimeout(() => this.closeModal(), 2000);
+    } else {
+      this.successMessage = '';
+      this.errorMessage = `Cannot join to ${this.draw.name}`;
+    }
   }
 }

@@ -1,8 +1,8 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth.service';
 import * as firebase from 'firebase';
 import {Observable} from 'rxjs/Observable';
-import {Subscription} from "rxjs/Subscription";
+import {Draw} from '../../model/draw.interface';
 
 @Component({
   selector: 'santa-draw-card',
@@ -16,17 +16,17 @@ import {Subscription} from "rxjs/Subscription";
           <santa-draw-card-tags
             [isActive]="isActive()"
             [isFinished]="isFinished()"
-            [isOwner]="draw.owner === (user | async)?.uid"
-            [isParticipant]="draw.participants.indexOf((user | async)?.uid) > -1"
+            [isOwner]="isOwner"
+            [isParticipant]="isParticipant"
           ></santa-draw-card-tags>
         </span>
             <p>{{draw.description}}</p>
           </div>
           <santa-draw-card-actions
-            [canJoin]="isActive() && draw.participants.indexOf((user | async)?.uid) < 0"
-            [canDraw]="isActive() && draw.owner === (user | async)?.uid"
-            [canSeeParticipants]="draw.participants.indexOf((user | async)?.uid) > -1"
-            [canSeeWinner]="draw.participants.indexOf((user | async)?.uid) > -1 && isFinished()"
+            [canJoin]="isActive() && !isParticipant"
+            [canDraw]="isActive() && isOwner"
+            [canSeeParticipants]="isParticipant"
+            [canSeeWinner]="isParticipant && isFinished()"
             [draw]="draw"
           ></santa-draw-card-actions>
         </div>
@@ -37,6 +37,9 @@ import {Subscription} from "rxjs/Subscription";
 export class DrawCardComponent implements OnInit {
   @Input() draw: Draw;
 
+  public isParticipant = false;
+  public isOwner = false;
+
   user: Observable<firebase.User>;
 
   constructor(private authService: AuthService) {
@@ -44,6 +47,12 @@ export class DrawCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
+    this.user.subscribe(
+      user => {
+        this.isParticipant = this.draw.participants.some(pcp => pcp.uid === user.uid);
+        this.isOwner = this.draw.owner.uid === user.uid;
+      }
+    );
   }
 
   public isActive() {

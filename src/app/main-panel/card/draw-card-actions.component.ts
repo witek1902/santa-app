@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ModalsStream} from '../modals/modals.stream';
+import {Draw} from '../../model/draw.interface';
 
 @Component({
   selector: 'santa-draw-card-actions',

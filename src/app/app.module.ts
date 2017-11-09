@@ -7,11 +7,11 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {LoginComponent} from './login.component';
 import {AuthService} from './service/auth.service';
-import {MarketService} from './service/market.service';
+import {DrawService} from './service/draw.service';
 import {MaterializeModule} from 'angular2-materialize';
 import {MainModule} from './main-panel/main.module';
-import {ModalsStream} from "./main-panel/modals/modals.stream";
-import {SnowService} from "./service/snow.service";
+import {ModalsStream} from './main-panel/modals/modals.stream';
+import {SnowService} from './service/snow.service';
 
 export const firebaseConfig = {
   apiKey: environment.apiKey,
@@ -37,7 +37,7 @@ export const firebaseConfig = {
   ],
   providers: [
     AuthService,
-    MarketService,
+    DrawService,
     ModalsStream,
     SnowService
   ],

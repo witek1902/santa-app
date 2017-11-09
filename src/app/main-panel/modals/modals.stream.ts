@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
+import {Draw} from '../../model/draw.interface';
 
 @Injectable()
 export class ModalsStream {

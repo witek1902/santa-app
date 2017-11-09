@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
+import {Draw} from '../../model/draw.interface';
 
 @Component({
   selector: 'santa-participants-modal',
@@ -11,10 +12,10 @@ import {BaseModal} from './base-modal.component';
         <h4>{{draw?.name}}</h4>
         <ul class="collection">
           <li *ngFor="let participant of draw?.participants" class="collection-item avatar">
-            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <span [ngClass]="(draw?.owner == participant) ? 'red-text darken-1 title' : 'title'">{{participant}}</span>
-            <p *ngIf="draw?.owner != participant">Participant</p>
-            <p *ngIf="draw?.owner == participant" class="red-text darken-1">Participant<br>Owner</p>
+            <img [src]="participant.photoURL" alt="" class="circle">
+            <span [ngClass]="(draw?.owner.uid == participant.uid) ? 'red-text darken-1 title' : 'title'">{{participant.displayName}}</span>
+            <p *ngIf="draw?.owner.uid !== participant.uid">Participant</p>
+            <p *ngIf="draw?.owner.uid === participant.uid" class="red-text darken-1">Participant<br>Owner</p>
           </li>
         </ul>
       </div>

@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
-import {AuthService} from "../../service/auth.service";
-import {Observable} from "rxjs/Observable";
+import {Draw} from '../../model/draw.interface';
 
 @Component({
   selector: 'santa-draw-modal',

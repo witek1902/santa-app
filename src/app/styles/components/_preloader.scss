@@ -1,0 +1,9 @@
+.preloader-wrapper.active {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+
+  .spinner-layer {
+    border-color: white;
+  }
+}
