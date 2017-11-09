@@ -82,6 +82,18 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
 
   public createNewDraw() {
     const {name, description, password} = this;
+
+    if (name.length > 20) {
+      this.errorMessage = 'Name length max 20';
+      return;
+    } else if (this.description.length > 150) {
+      this.errorMessage = 'Description length max 150';
+      return;
+    } else if (this.password.length < 2) {
+      this.errorMessage = 'Password length min 2';
+      return;
+    }
+
     const newDraw = {
       name,
       description,
