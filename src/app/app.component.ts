@@ -3,23 +3,24 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import * as firebase from 'firebase';
 import {AuthService} from './service/auth.service';
+import {UserEntry} from "./model/user-entry.interface";
 
 @Component({
   selector: 'santa-root',
   template: `
     <div id="snow"></div>
-    <santa-login *ngIf="!(user | async)?.uid"></santa-login>
-    <santa-main *ngIf="(user | async)?.uid"></santa-main>
+    <santa-login *ngIf="!authService.getCurrentUserEntry()?.uid"></santa-login>
+    <santa-main *ngIf="authService.getCurrentUserEntry()?.uid"></santa-main>
   `
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  user: Observable<firebase.User>;
+  // userEntry: UserEntry;
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
   }
 
-  ngOnInit() {
-    this.user = this.authService.getUser();
-  }
+  // ngOnInit() {
+  //   this.userEntry = this.authService.getCurrentUserEntry();
+  // }
 }

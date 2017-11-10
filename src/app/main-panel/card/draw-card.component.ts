@@ -49,8 +49,13 @@ export class DrawCardComponent implements OnInit {
     this.user = this.authService.getUser();
     this.user.subscribe(
       user => {
-        this.isParticipant = this.draw.participants.some(pcp => pcp.uid === user.uid);
-        this.isOwner = this.draw.owner.uid === user.uid;
+        if (user && user.uid) {
+          this.isParticipant = this.draw.participants.some(pcp => pcp.uid === user.uid);
+          this.isOwner = this.draw.owner.uid === user.uid;
+        } else {
+          this.isParticipant = false;
+          this.isOwner = false;
+        }
       }
     );
   }

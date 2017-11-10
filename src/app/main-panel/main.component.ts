@@ -13,13 +13,6 @@ import {Draw} from '../model/draw.interface';
     <santa-draws></santa-draws>
     <santa-fab-button></santa-fab-button>
     <santa-modals></santa-modals>
-    <!--<ul *ngFor="let market of markets | async">-->
-    <!--<li>-->
-    <!--<strong>{{ market.name}}</strong>-->
-    <!--<br>-->
-    <!--{{market.description}}-->
-    <!--</li>-->
-    <!--</ul>-->
   `
 })
 export class MainComponent implements OnInit, AfterViewInit {

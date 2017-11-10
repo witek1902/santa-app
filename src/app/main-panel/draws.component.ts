@@ -38,29 +38,31 @@ export class DrawsComponent implements OnInit {
 
     this.authService.getUser().subscribe(
       user => {
-        this.uid = user.uid;
-        this.isLoading = true;
-        this.drawService.getDraws()
-          .subscribe(
-            draws => {
-              this.availableDraws = [];
-              this.userDraws = [];
-              draws.forEach(draw => {
-                if (draw.status === 'ACTIVE' && !draw.participants.some(pcp => pcp.uid === this.uid)) {
-                  this.availableDraws.push(draw);
-                } else if (draw.participants.some(pcp => pcp.uid === this.uid)) {
-                  this.userDraws.push(draw);
-                }
+        if (user) {
+          this.uid = user.uid;
+          this.isLoading = true;
+          this.drawService.getDraws()
+            .subscribe(
+              draws => {
+                this.availableDraws = [];
+                this.userDraws = [];
+                draws.forEach(draw => {
+                  if (draw.status === 'ACTIVE' && !draw.participants.some(pcp => pcp.uid === this.uid)) {
+                    this.availableDraws.push(draw);
+                  } else if (draw.participants.some(pcp => pcp.uid === this.uid)) {
+                    this.userDraws.push(draw);
+                  }
+                });
+
+                this.availableDraws = this.drawService.sortDraws(this.availableDraws);
+                this.userDraws = this.drawService.sortDraws(this.userDraws);
+
+                this.isLoading = false;
+                setTimeout(() => {
+                  this.snowService.updateSnow();
+                }, 500);
               });
-
-              this.availableDraws = this.drawService.sortDraws(this.availableDraws);
-              this.userDraws = this.drawService.sortDraws(this.userDraws);
-
-              this.isLoading = false;
-              setTimeout(() => {
-                this.snowService.updateSnow();
-              }, 500);
-            });
+        }
       });
   }
 }
