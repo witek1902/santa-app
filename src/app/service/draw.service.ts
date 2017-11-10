@@ -19,6 +19,10 @@ export class DrawService {
     return this.drawsCollection.valueChanges();
   }
 
+  sortDraws(draws: Draw[]): Draw[] {
+    return draws.sort((a, b) => (a.status > b.status) ? 1 : -1);
+  }
+
   joinToDraw(draw: Draw, password: string): boolean {
     if (draw.participants.some(pcp => pcp.uid === this.authService.getCurrentUserEntry().uid)) {
       return false;
