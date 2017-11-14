@@ -13,7 +13,7 @@ import {DrawService} from "../../service/draw.service";
       <div class="modal-content">
         <h4>{{draw?.name}}</h4>
         <iframe *ngIf="showWow" style="width: 100%;" height="315" width="420" frameborder="0"
-                src="https://www.youtube.com/embed/iXgvXuZF_yk?rel=0&controls=0&showinfo=0&autoplay=1"
+                src="https://www.youtube.com/embed/zqTwOoElxBA?rel=0&controls=0&showinfo=0&autoplay=1"
         ></iframe>
         <div class="winner-modal__winner-title ">
           <img [src]="winner?.photoURL" alt="" class="circle">
