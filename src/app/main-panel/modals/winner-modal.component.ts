@@ -42,15 +42,11 @@ export class WinnerModalComponent extends BaseModal implements OnInit {
     this.openModal$ = this.modalsStream.getWinnerModalStream().subscribe(
       draw => {
         this.draw = draw;
+        this.showWow = true;
+        this.drawService.getWinner(this.draw).then(winner => this.winner = winner);
         this.openModal();
       }
     );
-  }
-
-  openModal() {
-    super.openModal();
-    this.showWow = true;
-    this.drawService.getWinner(this.draw).then(winner => this.winner = winner);
   }
 
   closeModal() {
