@@ -23,7 +23,7 @@ declare var $: any;
                 {{(user | async)?.displayName}}
                 <i class="material-icons right">arrow_drop_down</i>
                 <ul id="user-dropdown" class="dropdown-content">
-                  <li><a class="red-text text-darken-1" (click)="logout()">Wyloguj</a></li>
+                  <li><a class="red-text text-darken-1" (click)="logout()">Log out</a></li>
                 </ul>
               </a>
             </li>
