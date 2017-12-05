@@ -11,13 +11,13 @@ import {ModalsStream} from './modals.stream';
       <div class="modal-content">
         <div class="row">
           <div class="col s12">
-            <h4>Send me a message</h4>
+            <h4>Leave me a message</h4>
           </div>
         </div>
         <div class="row">
           <div class="col s12">
             <p>If you have some feedback about app or you want to leave a message or send anything
-              (funny dogs are ok!), it is a good place for that! You can write message in English or in Polish.
+              (funny dogs are ok!), it is a good place for that! You can write a message in English or in Polish.
               Thank you for your time and for using this app :)
             </p>
           </div>
