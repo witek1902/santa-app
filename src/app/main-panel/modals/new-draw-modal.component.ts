@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseModal} from './base-modal.component';
 import {ModalsStream} from './modals.stream';
-import {DrawService} from "../../service/draw.service";
+import {DrawService} from '../../service/draw.service';
 
 @Component({
   selector: 'santa-new-draw-modal',

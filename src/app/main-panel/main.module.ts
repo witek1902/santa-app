@@ -17,6 +17,7 @@ import {ParticipantsModalComponent} from './modals/participants-modal.component'
 import {WinnerModalComponent} from './modals/winner-modal.component';
 import {NewDrawModalComponent} from './modals/new-draw-modal.component';
 import {VideoModalComponent} from './modals/video-modal.component';
+import {MessageModalComponent} from './modals/message-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import {VideoModalComponent} from './modals/video-modal.component';
     FabButtonComponent,
     HeaderComponent,
     JoinModalComponent,
-    NewDrawModalComponent,
     MainComponent,
+    MessageModalComponent,
     ModalsComponent,
+    NewDrawModalComponent,
     ParticipantsModalComponent,
     WinnerModalComponent,
     VideoModalComponent

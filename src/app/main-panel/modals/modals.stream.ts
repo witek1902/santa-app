@@ -10,6 +10,7 @@ export class ModalsStream {
   private onShowWinnerModal: Subject<Draw> = new Subject<Draw>();
   private onShowNewDrawModal: Subject<any> = new Subject<any>();
   private onShowVideoModal: Subject<any> = new Subject<any>();
+  private onShowMessageModal: Subject<any> = new Subject<any>();
 
   public getJoinModalStream(): Subject<Draw> {
     return this.onShowJoinModal;
@@ -35,6 +36,10 @@ export class ModalsStream {
     return this.onShowVideoModal;
   }
 
+  public getMessageModalStream(): Subject<any> {
+    return this.onShowMessageModal;
+}
+
   public showJoinModal(draw: Draw) {
     this.onShowJoinModal.next(draw);
   }
@@ -57,5 +62,9 @@ export class ModalsStream {
 
   public showVideoModal() {
     this.onShowVideoModal.next({});
+  }
+
+  public showMessageModal() {
+    this.onShowMessageModal.next({});
   }
 }

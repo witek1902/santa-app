@@ -17,6 +17,7 @@ declare var $: any;
             <li><a href="https://github.com/arturczopek/santa-app" target="_blank">Check app <i
               class="fa fa-github"></i></a></li>
             <li><a (click)="showSantaModal()">Show me santa!</a></li>
+            <li><a (click)="showMessageModal()">Leave me a message!<i class="small material-icons right">message</i></a></li>
             <li>
               <a class="dropdown-button" data-activates="user-dropdown">
                 <!--<img src="{{(user | async)?.photoURL}}" class="circle responsive-img">-->
@@ -50,6 +51,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   showSantaModal() {
     this.modalsStream.showVideoModal();
+  }
+
+  showMessageModal() {
+    this.modalsStream.showMessageModal();
   }
 
   logout() {

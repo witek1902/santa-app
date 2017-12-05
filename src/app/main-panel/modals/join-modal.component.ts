@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
 import {Draw} from '../../model/draw.interface';
-import {DrawService} from "../../service/draw.service";
+import {DrawService} from '../../service/draw.service';
 
 @Component({
   selector: 'santa-join-modal',
