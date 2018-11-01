@@ -10,4 +10,5 @@ export interface Draw {
   pairs: Pair[];
   status: string;         // ACTIVE, FINISHED
   password: string;
+  moneyLimit?: number;
 }

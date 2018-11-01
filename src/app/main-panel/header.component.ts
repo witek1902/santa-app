@@ -12,7 +12,7 @@ declare var $: any;
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper red darken-1">
-          <a href="#" class="brand-logo">Santa App</a>
+          <a href="https://simplecoding.pl/santaapp" class="brand-logo">Santa App - https://simplecoding.pl/santaapp</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="https://github.com/arturczopek/santa-app" target="_blank">Check app <i
               class="fa fa-github"></i></a></li>

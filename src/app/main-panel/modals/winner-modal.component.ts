@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ModalsStream} from './modals.stream';
 import {BaseModal} from './base-modal.component';
 import {Draw} from '../../model/draw.interface';
-import {UserEntry} from "../../model/user-entry.interface";
-import {DrawService} from "../../service/draw.service";
+import {UserEntry} from '../../model/user-entry.interface';
+import {DrawService} from '../../service/draw.service';
 
 @Component({
   selector: 'santa-winner-modal',
@@ -11,13 +11,16 @@ import {DrawService} from "../../service/draw.service";
     <div id="winner-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
          [materializeActions]="modalActions">
       <div class="modal-content">
-        <h4>{{draw?.name}}</h4>
+        <h4>{{draw?.name}}; Money limit: {{draw?.moneyLimit || 'No'}}</h4>
         <iframe *ngIf="showWow" style="width: 100%;" height="315" width="420" frameborder="0"
                 src="https://www.youtube.com/embed/zqTwOoElxBA?rel=0&controls=0&showinfo=0&autoplay=1"
         ></iframe>
-        <div class="winner-modal__winner-title ">
+        <div class="winner-modal__winner-title">
           <img [src]="winner?.photoURL" alt="" class="circle">
           <p>{{winner?.displayName}}</p>
+        </div>
+        <div class="winner-modal__winner-subtitle">
+          <p>Wish: {{winner?.wish || 'Not defined'}}</p>
         </div>
       </div>
       <div class="modal-footer">

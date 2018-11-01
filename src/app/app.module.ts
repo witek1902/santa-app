@@ -12,7 +12,7 @@ import {MaterializeModule} from 'angular2-materialize';
 import {MainModule} from './main-panel/main.module';
 import {ModalsStream} from './main-panel/modals/modals.stream';
 import {SnowService} from './service/snow.service';
-import {MessageService} from "./service/message.service";
+import {MessageService} from './service/message.service';
 
 export const firebaseConfig = {
   apiKey: environment.apiKey,

@@ -31,6 +31,11 @@ import {DrawService} from '../../service/draw.service';
                      [(ngModel)]="password" name="password">
               <label for="password">Password</label>
             </div>
+            <div class="input-field col s12">
+              <input id="moneyLimit" type="number" min="0" step="1"
+                     [(ngModel)]="moneyLimit" name="moneyLimit">
+              <label for="moneyLimit">Money Limit (0 means no limit)</label>
+            </div>
             <div class="col s12">
               <p>
                 <input type="checkbox" id="showNewPassword" name="showNewPassword" [(ngModel)]="showPassword"/>
@@ -61,6 +66,7 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
   public name = '';
   public description = '';
   public password = '';
+  public moneyLimit = 0;
   public showPassword = false;
 
   constructor(private modalsStream: ModalsStream, private drawService: DrawService) {
@@ -74,6 +80,7 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
         this.name = '';
         this.description = '';
         this.password = '';
+        this.moneyLimit = 0;
         this.showPassword = false;
         this.openModal();
       }
@@ -81,7 +88,7 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
   }
 
   public createNewDraw() {
-    const {name, description, password} = this;
+    const {name, description, password, moneyLimit} = this;
 
     if (name.length > 20) {
       this.errorMessage = 'Name length max 20';
@@ -92,12 +99,15 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
     } else if (this.password.length < 2) {
       this.errorMessage = 'Password length min 2';
       return;
+    } else if (this.moneyLimit < 0) {
+      this.errorMessage = 'Money limit cannot be less than 0!';
     }
 
     const newDraw = {
       name,
       description,
-      password
+      password,
+      moneyLimit
     };
 
     const created = this.drawService.createDraw(newDraw);

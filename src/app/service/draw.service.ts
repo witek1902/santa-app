@@ -5,6 +5,7 @@ import {Draw} from '../model/draw.interface';
 import * as CryptoJS from 'crypto-js';
 import {AuthService} from './auth.service';
 import {UserEntry} from '../model/user-entry.interface';
+import {DrawResult} from '../model/draw-result.interface';
 
 @Injectable()
 export class DrawService {
@@ -23,7 +24,7 @@ export class DrawService {
     return draws.sort((a, b) => (a.status > b.status) ? 1 : -1);
   }
 
-  joinToDraw(draw: Draw, password: string): boolean {
+  joinToDraw(draw: Draw, password: string, wish?: string): boolean {
     if (draw.participants.some(pcp => pcp.uid === this.authService.getCurrentUserEntry().uid)) {
       return false;
     }
@@ -36,7 +37,10 @@ export class DrawService {
       return false;
     }
 
-    draw.participants.push(this.authService.getCurrentUserEntry());
+    const currentUser = this.authService.getCurrentUserEntry();
+    currentUser.wish = wish;
+
+    draw.participants.push(currentUser);
 
     this.drawsCollection.ref.where('id', '==', draw.id).get()
       .then(snap => snap.forEach(doc => {
@@ -47,7 +51,7 @@ export class DrawService {
     return true;
   }
 
-  createDraw({name, description, password}): boolean {
+  createDraw({name, description, password, moneyLimit}): boolean {
     const draw = {
       id: '' + Date.now(),
       name,
@@ -56,7 +60,8 @@ export class DrawService {
       participants: [this.authService.getCurrentUserEntry()],
       pairs: [],
       password: CryptoJS.MD5(password).toString(),
-      status: 'ACTIVE'
+      status: 'ACTIVE',
+      moneyLimit
     };
 
     this.drawsCollection.add(draw);
@@ -78,26 +83,22 @@ export class DrawService {
       );
   }
 
-  startDraw(draw: Draw, password: string): boolean {
-    console.log('start');
+  startDraw(draw: Draw, password: string): DrawResult {
 
     if (draw.owner.uid !== this.authService.getCurrentUserEntry().uid) {
-      console.log('wrong user');
-      return false;
+      return {success: false, errorMessage: 'It is not an owner!'};
     }
 
     if (draw.status !== 'ACTIVE') {
-      console.log('not active');
-      return false;
+      return {success: false, errorMessage: 'Market is not active!'};
     }
 
     if (draw.password !== CryptoJS.MD5(password).toString()) {
-      console.log('wrong pass');
-      return false;
+      return {success: false, errorMessage: 'Wrong password!'};
     }
 
     if (draw.participants.length < 2) {
-      console.log('malo...');
+      return {success: false, errorMessage: 'To less participants!'};
     }
 
     let finalPairs = [];
@@ -110,25 +111,16 @@ export class DrawService {
       const possibleFrom = [...draw.participants];
       const possibleTo = [...draw.participants];
 
-      console.log('arrays', finalPairs, possibleFrom, possibleTo);
 
       for (let i = draw.participants.length - 1; i >= 0; i--) {
-
-        console.log('start:', i);
-
         if (i === 0) {
-          console.log('last');
           if (possibleFrom[0].uid !== possibleTo[0].uid) {
             finalPairs.push({
               from: possibleFrom[0],
               to: possibleTo[0]
             });
-
-            console.log('ok, pairs', finalPairs, i);
-
             isOk = true;
           } else {
-            console.log('not ok, finish');
             isOk = false;
           }
         } else {
@@ -140,12 +132,8 @@ export class DrawService {
 
           let randomTo = Math.floor(Math.random() * possibleFrom.length);
 
-          console.log('random to', randomTo);
-
           if (possibleFrom[i].uid === possibleTo[randomTo].uid) {
-            console.log('duplicated users', possibleFrom[i], possibleTo[randomTo]);
             randomTo = (randomTo + 1) % possibleTo.length;
-            console.log('new user', possibleTo[randomTo]);
           }
 
           pair.to = possibleTo[randomTo];
@@ -153,7 +141,6 @@ export class DrawService {
 
           possibleFrom.splice(i, 1);
           possibleTo.splice(randomTo, 1);
-          console.log('spliced', possibleFrom, possibleTo);
         }
       }
     } while (!isOk);
@@ -167,6 +154,6 @@ export class DrawService {
         })
       );
 
-    return true;
+    return {success: true};
   }
 }

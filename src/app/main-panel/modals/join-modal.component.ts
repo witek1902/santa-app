@@ -22,6 +22,11 @@ import {DrawService} from '../../service/draw.service';
                      [(ngModel)]="password" name="password">
               <label for="password">Password</label>
             </div>
+            <div class="input-field col s12">
+              <input id="wish" type="text"
+                     [(ngModel)]="wish" name="wish">
+              <label for="wish">What do you want from Santa this year?</label>
+            </div>
             <div class="col s12">
               <p>
                 <input type="checkbox" id="showJoinPassword" name="showJoinPassword" [(ngModel)]="showPassword"/>
@@ -52,6 +57,7 @@ export class JoinModalComponent extends BaseModal implements OnInit {
 
   public draw: Draw;
   public password = '';
+  public wish = '';
   public showPassword = false;
 
   constructor(private modalsStream: ModalsStream, private drawService: DrawService) {
@@ -64,6 +70,7 @@ export class JoinModalComponent extends BaseModal implements OnInit {
       draw => {
         this.draw = draw;
         this.password = '';
+        this.wish = '';
         this.showPassword = false;
         this.openModal();
       }
@@ -71,7 +78,7 @@ export class JoinModalComponent extends BaseModal implements OnInit {
   }
 
   public joinToDraw() {
-    const joined = this.drawService.joinToDraw(this.draw, this.password);
+    const joined = this.drawService.joinToDraw(this.draw, this.password, this.wish);
     if (joined) {
       this.successMessage = `You have successfully joined to draw ${this.draw.name}`;
       this.errorMessage = '';
