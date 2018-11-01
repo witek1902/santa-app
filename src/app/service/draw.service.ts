@@ -51,13 +51,15 @@ export class DrawService {
     return true;
   }
 
-  createDraw({name, description, password, moneyLimit}): boolean {
+  createDraw({name, description, password, moneyLimit, wish}): boolean {
+    const currentUser = this.authService.getCurrentUserEntry();
+    currentUser.wish = wish;
     const draw = {
       id: '' + Date.now(),
       name,
       description,
       owner: this.authService.getCurrentUserEntry(),
-      participants: [this.authService.getCurrentUserEntry()],
+      participants: [currentUser],
       pairs: [],
       password: CryptoJS.MD5(password).toString(),
       status: 'ACTIVE',

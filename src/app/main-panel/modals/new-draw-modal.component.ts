@@ -36,6 +36,11 @@ import {DrawService} from '../../service/draw.service';
                      [(ngModel)]="moneyLimit" name="moneyLimit">
               <label for="moneyLimit">Money Limit (0 means no limit)</label>
             </div>
+            <div class="input-field col s12">
+              <input id="wish" type="text"
+                     [(ngModel)]="wish" name="wish">
+              <label for="wish">Your wish (what you want to receive)</label>
+            </div>
             <div class="col s12">
               <p>
                 <input type="checkbox" id="showNewPassword" name="showNewPassword" [(ngModel)]="showPassword"/>
@@ -64,6 +69,7 @@ import {DrawService} from '../../service/draw.service';
 })
 export class NewDrawModalComponent extends BaseModal implements OnInit {
   public name = '';
+  public wish = '';
   public description = '';
   public password = '';
   public moneyLimit = 0;
@@ -78,6 +84,7 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
     this.openModal$ = this.modalsStream.getNewDrawModalStream().subscribe(
       () => {
         this.name = '';
+        this.wish = '';
         this.description = '';
         this.password = '';
         this.moneyLimit = 0;
@@ -88,7 +95,7 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
   }
 
   public createNewDraw() {
-    const {name, description, password, moneyLimit} = this;
+    const {name, description, password, moneyLimit, wish} = this;
 
     if (name.length > 20) {
       this.errorMessage = 'Name length max 20';
@@ -107,7 +114,8 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
       name,
       description,
       password,
-      moneyLimit
+      moneyLimit,
+      wish
     };
 
     const created = this.drawService.createDraw(newDraw);
