@@ -9,7 +9,7 @@ import {Draw} from '../../model/draw.interface';
     <div id="participants-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
          [materializeActions]="modalActions">
       <div class="modal-content">
-        <h4>{{draw?.name}}</h4>
+        <h4>{{draw?.name}}; Limit: {{draw?.moneyLimit || 'No'}}</h4>
         <ul class="collection">
           <li *ngFor="let participant of draw?.participants" class="collection-item avatar">
             <img [src]="participant.photoURL" alt="" class="circle">
