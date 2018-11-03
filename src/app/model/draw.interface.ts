@@ -11,4 +11,5 @@ export interface Draw {
   status: string;         // ACTIVE, FINISHED
   password: string;
   moneyLimit?: number;
+  createdDate?: Date;
 }

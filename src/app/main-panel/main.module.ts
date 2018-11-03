@@ -18,6 +18,8 @@ import {WinnerModalComponent} from './modals/winner-modal.component';
 import {NewDrawModalComponent} from './modals/new-draw-modal.component';
 import {VideoModalComponent} from './modals/video-modal.component';
 import {MessageModalComponent} from './modals/message-modal.component';
+import {DrawSearchComponent} from "./card/draw-search.component";
+import {NewsBoxComponent} from "./news-box.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {MessageModalComponent} from './modals/message-modal.component';
     CardTagsComponent,
     DrawCardComponent,
     DrawModalComponent,
+    DrawSearchComponent,
     DrawsComponent,
     DrawsListComponent,
     FabButtonComponent,
@@ -34,6 +37,7 @@ import {MessageModalComponent} from './modals/message-modal.component';
     MessageModalComponent,
     ModalsComponent,
     NewDrawModalComponent,
+    NewsBoxComponent,
     ParticipantsModalComponent,
     WinnerModalComponent,
     VideoModalComponent

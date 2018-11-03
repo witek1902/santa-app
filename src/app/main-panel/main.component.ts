@@ -10,6 +10,7 @@ import {Draw} from '../model/draw.interface';
   selector: 'santa-main',
   template: `
     <santa-header></santa-header>
+    <santa-news></santa-news>
     <santa-draws></santa-draws>
     <santa-fab-button></santa-fab-button>
     <santa-modals></santa-modals>

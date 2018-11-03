@@ -23,3 +23,54 @@ textarea:focus {
 textarea:focus + label {
   color: $secondary-color;
 }
+
+.input-field__grid input:focus + label {
+  color: white !important;
+}ngModelChange
+
+.input-field__grid input:focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
+}
+
+.input-field__grid .prefix {
+  color: white !important;
+  padding-top: 6px;
+}
+
+.input-field__grid .prefix.active {
+  color: white !important;
+}
+
+.input-field__grid input[type=text]:not(.browser-default) {
+  border-bottom: 1px solid white !important;
+  color: white !important;
+}
+
+.input-field__grid label {
+  color: white !important;
+}
+
+.collapsible__grid {
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.collapsible-header__grid {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  padding: 0.3rem;
+}
+
+.collapsible-header__grid i {
+  margin-right: 0.5rem;
+  padding-top: 0.3rem;
+}
+
+.collapsible-body a {
+  color: $secondary-color;
+  font-weight: bold;
+  text-decoration: underline;
+}

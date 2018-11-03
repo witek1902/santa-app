@@ -11,7 +11,7 @@ import {DrawService} from '../../service/draw.service';
     <div id="winner-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
          [materializeActions]="modalActions">
       <div class="modal-content">
-        <h4>{{draw?.name}}; Money limit: {{draw?.moneyLimit || 'No'}}</h4>
+        <h4>{{draw?.name}}; Limit: {{draw?.moneyLimit || '-'}} zł</h4>
         <iframe *ngIf="showWow" style="width: 100%;" height="315" width="420" frameborder="0"
                 src="https://www.youtube.com/embed/zqTwOoElxBA?rel=0&controls=0&showinfo=0&autoplay=1"
         ></iframe>
@@ -20,11 +20,11 @@ import {DrawService} from '../../service/draw.service';
           <p>{{winner?.displayName}}</p>
         </div>
         <div class="winner-modal__winner-subtitle">
-          <p>Wish: {{winner?.wish || 'Not defined'}}</p>
+          <p>Życzenie: {{winner?.wish || 'Nie podano'}}</p>
         </div>
       </div>
       <div class="modal-footer">
-        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Zamknij</a>
       </div>
     </div>
   `

@@ -18,19 +18,19 @@ import {DrawService} from '../../service/draw.service';
         <div class="row">
           <form materialize>
             <div class="input-field col s12">
-              <input id="password" [type]="(showPassword) ? 'text' : 'password'"
+              <input [type]="(showPassword) ? 'text' : 'password'"
                      [(ngModel)]="password" name="password">
-              <label for="password">Password</label>
+              <label for="password">Hasło</label>
             </div>
             <div class="input-field col s12">
               <input id="wish" type="text"
                      [(ngModel)]="wish" name="wish">
-              <label for="wish">What do you want from Santa this year?</label>
+              <label for="wish">Co chcesz dostać w tym roku od św Mikołaja?</label>
             </div>
             <div class="col s12">
               <p>
                 <input type="checkbox" id="showJoinPassword" name="showJoinPassword" [(ngModel)]="showPassword"/>
-                <label for="showJoinPassword">Show Password</label>
+                <label for="showJoinPassword">Pokaż hasło</label>
               </p>
             </div>
           </form>
@@ -47,8 +47,8 @@ import {DrawService} from '../../service/draw.service';
         </div>
       </div>
       <div class="modal-footer">
-        <a class="modal-action waves-effect waves-blue btn-flat" (click)="joinToDraw()">Join</a>
-        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="modal-action waves-effect waves-blue btn-flat" (click)="joinToDraw()">Dołącz</a>
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Zamknij</a>
       </div>
     </div>
   `

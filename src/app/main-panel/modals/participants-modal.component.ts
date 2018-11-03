@@ -9,18 +9,18 @@ import {Draw} from '../../model/draw.interface';
     <div id="participants-modal" class="modal" materialize="modal" [materializeParams]="[modalParams]"
          [materializeActions]="modalActions">
       <div class="modal-content">
-        <h4>{{draw?.name}}; Limit: {{draw?.moneyLimit || 'No'}}</h4>
+        <h4>{{draw?.name}}; Limit: {{draw?.moneyLimit || '-'}} zł</h4>
         <ul class="collection">
           <li *ngFor="let participant of draw?.participants" class="collection-item avatar">
             <img [src]="participant.photoURL" alt="" class="circle">
             <span [ngClass]="(draw?.owner.uid == participant.uid) ? 'red-text darken-1 title' : 'title'">{{participant.displayName}}</span>
-            <p *ngIf="draw?.owner.uid !== participant.uid">Participant</p>
-            <p *ngIf="draw?.owner.uid === participant.uid" class="red-text darken-1">Participant<br>Owner</p>
+            <p *ngIf="draw?.owner.uid !== participant.uid">Uczestnik</p>
+            <p *ngIf="draw?.owner.uid === participant.uid" class="red-text darken-1">Uczestnik<br>Właściciel</p>
           </li>
         </ul>
       </div>
       <div class="modal-footer">
-        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Zamknij</a>
       </div>
     </div>
   `

@@ -10,12 +10,14 @@ import {AuthService} from '../service/auth.service';
     <div class="container">
       <div class="row">
         <santa-draws-list
-          [title]="'Available draws'"
+          [title]="'Dostępne losowania'"
+          [searchPlaceholder]="'Szukaj wśród dostępnych losowań...'"
           [draws]="availableDraws"
           [isLoading]="isLoading"
         ></santa-draws-list>
         <santa-draws-list
-          [title]="'Your draws'"
+          [title]="'Twoje losowania'"
+          [searchPlaceholder]="'Szukaj wśród twoich losowań...'"
           [draws]="userDraws"
           [isLoading]="isLoading"
         ></santa-draws-list>
@@ -35,7 +37,6 @@ export class DrawsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.authService.getUser().subscribe(
       user => {
         if (user) {

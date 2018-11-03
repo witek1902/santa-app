@@ -15,7 +15,7 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
         ></iframe>
       </div>
       <div class="modal-footer">
-        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Zamknij</a>
       </div>
     </div>
   `

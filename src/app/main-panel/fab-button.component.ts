@@ -6,7 +6,7 @@ import {ModalsStream} from './modals/modals.stream';
   template: `
     <div class="fixed-action-btn">
       <a class="btn-floating btn-large waves-effect waves-light red darken-1 tooltipped"
-         materialize="tooltip" data-position="left" data-delay="50" data-tooltip="Add draw"
+         materialize="tooltip" data-position="left" data-delay="50" data-tooltip="Dodaj losowanie"
          (click)="createDraw()">
         <i class="material-icons">add</i>
       </a>

@@ -11,20 +11,19 @@ import {ModalsStream} from './modals.stream';
       <div class="modal-content">
         <div class="row">
           <div class="col s12">
-            <h4>Leave me a message</h4>
+            <h4>Zostaw wiadomość</h4>
           </div>
         </div>
         <div class="row">
           <div class="col s12">
-            <p>If you have some feedback about app or you want to leave a message or send anything
-              (funny dogs are ok!), it is a good place for that! You can write a message in English or in Polish.
-              Thank you for your time and for using this app :)
+            <p>Jeżeli chciałbyś się podzielić opinią o aplikacji, radą, sugestią, wyślij mi tu wiadomość proszę
+              (śmieszne kotki też mogą być!). Dzięki za twój czas i za używanie aplikacji :)
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col s12">
-            <p> For more information, check my <a href="http://simplecoding.pl" target="_blank">blog</a>.</p>
+            <p>Po więcej informacji, zapraszam na <a href="https://simplecoding.pl" target="_blank">mojego bloga</a>.</p>
           </div>
         </div>
         <div class="row">
@@ -32,7 +31,7 @@ import {ModalsStream} from './modals.stream';
             <div class="input-field col s12">
                <textarea id="message" type="text" class="materialize-textarea"
                          [(ngModel)]="message" name="message"></textarea>
-              <label for="message">Your Message</label>
+              <label for="message">Twoja wiadomość</label>
             </div>
           </form>
         </div>
@@ -48,8 +47,8 @@ import {ModalsStream} from './modals.stream';
         </div>
       </div>
       <div class="modal-footer">
-        <a class="modal-action waves-effect waves-blue btn-flat" (click)="sendMessage()">Send</a>
-        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="modal-action waves-effect waves-blue btn-flat" (click)="sendMessage()">Wyślij</a>
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Zamknij</a>
       </div>
     </div>
   `
@@ -75,12 +74,12 @@ export class MessageModalComponent extends BaseModal implements OnInit {
   public sendMessage() {
     const sent = this.messageService.sendMessage(this.message);
     if (sent) {
-      this.successMessage = `You have successfully sent me a message. Thank you! :)`;
+      this.successMessage = `Udało się wysłać wiadomość. Dzięki! :)`;
       this.errorMessage = '';
       setTimeout(() => this.closeModal(), 2000);
     } else {
       this.successMessage = '';
-      this.errorMessage = `Cannot send a message :( Try again soon.`;
+      this.errorMessage = `Nie można wysłać wiadomości :( Spróbuj ponownie później.`;
     }
   }
 }

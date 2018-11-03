@@ -63,7 +63,8 @@ export class DrawService {
       pairs: [],
       password: CryptoJS.MD5(password).toString(),
       status: 'ACTIVE',
-      moneyLimit
+      moneyLimit,
+      createdDate: new Date()
     };
 
     this.drawsCollection.add(draw);
@@ -88,24 +89,22 @@ export class DrawService {
   startDraw(draw: Draw, password: string): DrawResult {
 
     if (draw.owner.uid !== this.authService.getCurrentUserEntry().uid) {
-      return {success: false, errorMessage: 'It is not an owner!'};
+      return {success: false, errorMessage: 'To nie jest właściciel!'};
     }
 
     if (draw.status !== 'ACTIVE') {
-      return {success: false, errorMessage: 'Market is not active!'};
+      return {success: false, errorMessage: 'Losowanie jest nieaktywne!'};
     }
 
     if (draw.password !== CryptoJS.MD5(password).toString()) {
-      return {success: false, errorMessage: 'Wrong password!'};
+      return {success: false, errorMessage: 'Złe hasło!'};
     }
 
     if (draw.participants.length < 2) {
-      return {success: false, errorMessage: 'To less participants!'};
+      return {success: false, errorMessage: 'Za mało uczestników (conajmniej 2)!'};
     }
 
     let finalPairs = [];
-
-
     let isOk = false;
 
     do {

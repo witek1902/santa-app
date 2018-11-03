@@ -11,7 +11,7 @@ import {DrawService} from '../../service/draw.service';
       <div class="modal-content">
         <div class="row">
           <div class="col s12">
-            <h4>Create draw</h4>
+            <h4>Stwórz losowanie</h4>
           </div>
         </div>
         <div class="row">
@@ -19,32 +19,32 @@ import {DrawService} from '../../service/draw.service';
             <div class="input-field col s12">
               <input id="name" type="text"
                      [(ngModel)]="name" name="name">
-              <label for="name">Name</label>
+              <label for="name">Nazwa</label>
             </div>
             <div class="input-field col s12">
               <textarea id="description" type="text" class="materialize-textarea"
                         [(ngModel)]="description" name="description"></textarea>
-              <label for="description">Description</label>
+              <label for="description">Opis</label>
             </div>
             <div class="input-field col s12">
-              <input id="password" [type]="(showPassword) ? 'text' : 'password'"
+              <input [type]="(showPassword) ? 'text' : 'password'"
                      [(ngModel)]="password" name="password">
-              <label for="password">Password</label>
+              <label for="password">Hasło</label>
             </div>
             <div class="input-field col s12">
               <input id="moneyLimit" type="number" min="0" step="1"
                      [(ngModel)]="moneyLimit" name="moneyLimit">
-              <label for="moneyLimit">Money Limit (0 means no limit)</label>
+              <label for="moneyLimit">Limit pieniężny (0 oznacza brak limitu)</label>
             </div>
             <div class="input-field col s12">
               <input id="wish" type="text"
                      [(ngModel)]="wish" name="wish">
-              <label for="wish">Your wish (what you want to receive)</label>
+              <label for="wish">Twoje życzenie (co chciałbyś dostać od św Mikołaja?)</label>
             </div>
             <div class="col s12">
               <p>
                 <input type="checkbox" id="showNewPassword" name="showNewPassword" [(ngModel)]="showPassword"/>
-                <label for="showNewPassword">Show Password</label>
+                <label for="showNewPassword">Pokaż hasło</label>
               </p>
             </div>
           </form>
@@ -61,8 +61,8 @@ import {DrawService} from '../../service/draw.service';
         </div>
       </div>
       <div class="modal-footer">
-        <a class="modal-action waves-effect waves-blue btn-flat" (click)="createNewDraw()">Create</a>
-        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Close</a>
+        <a class="modal-action waves-effect waves-blue btn-flat" (click)="createNewDraw()">Stwórz</a>
+        <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Zamknij</a>
       </div>
     </div>
   `
@@ -97,17 +97,24 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
   public createNewDraw() {
     const {name, description, password, moneyLimit, wish} = this;
 
-    if (name.length > 20) {
-      this.errorMessage = 'Name length max 20';
+    if (name.length > 30) {
+      this.errorMessage = this.errorMessage + 'Nazwa maksymalnie 30 znaków. ';
+    }
+
+    if (this.description.length > 150) {
+      this.errorMessage = this.errorMessage + 'Opis maksymalnie 150 znaków. ';
+    }
+
+    if (this.password.length < 2) {
+      this.errorMessage = this.errorMessage + 'Hasło minimum 2 znaki. ';
+    }
+
+    if (this.moneyLimit < 0) {
+      this.errorMessage = this.errorMessage + 'Limit pieniężny nie może być mniejszy niż 0.';
+    }
+
+    if (this.errorMessage.length > 0) {
       return;
-    } else if (this.description.length > 150) {
-      this.errorMessage = 'Description length max 150';
-      return;
-    } else if (this.password.length < 2) {
-      this.errorMessage = 'Password length min 2';
-      return;
-    } else if (this.moneyLimit < 0) {
-      this.errorMessage = 'Money limit cannot be less than 0!';
     }
 
     const newDraw = {
@@ -122,11 +129,11 @@ export class NewDrawModalComponent extends BaseModal implements OnInit {
 
     if (created) {
       this.errorMessage = '';
-      this.successMessage = `You have successfully created ${this.name} draw`;
+      this.successMessage = `Stworzyłeś losowanie ${this.name}.`;
       setTimeout(() => this.closeModal(), 2000);
     } else {
       this.successMessage = '';
-      this.errorMessage = `Cannot create ${this.name} draw, try again.`;
+      this.errorMessage = `Nie można stworzyć losowania ${this.name}, spróbuj ponownie.`;
     }
   }
 }
