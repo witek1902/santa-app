@@ -23,8 +23,7 @@ import {DrawService} from '../../service/draw.service';
               <label for="password">Hasło</label>
             </div>
             <div class="input-field col s12">
-              <input id="wish" type="text"
-                     [(ngModel)]="wish" name="wish">
+              <input type="text" [(ngModel)]="wish" name="wish">
               <label for="wish">Co chcesz dostać w tym roku od św Mikołaja?</label>
             </div>
             <div class="col s12">

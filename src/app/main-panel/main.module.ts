@@ -16,10 +16,7 @@ import {DrawModalComponent} from './modals/draw-modal.component';
 import {ParticipantsModalComponent} from './modals/participants-modal.component';
 import {WinnerModalComponent} from './modals/winner-modal.component';
 import {NewDrawModalComponent} from './modals/new-draw-modal.component';
-import {VideoModalComponent} from './modals/video-modal.component';
-import {MessageModalComponent} from './modals/message-modal.component';
 import {DrawSearchComponent} from "./card/draw-search.component";
-import {NewsBoxComponent} from "./news-box.component";
 
 @NgModule({
   declarations: [
@@ -34,13 +31,10 @@ import {NewsBoxComponent} from "./news-box.component";
     HeaderComponent,
     JoinModalComponent,
     MainComponent,
-    MessageModalComponent,
     ModalsComponent,
     NewDrawModalComponent,
-    NewsBoxComponent,
     ParticipantsModalComponent,
-    WinnerModalComponent,
-    VideoModalComponent
+    WinnerModalComponent
   ],
   imports: [
     CommonModule,

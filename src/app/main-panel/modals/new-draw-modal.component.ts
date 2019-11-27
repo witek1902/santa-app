@@ -37,8 +37,7 @@ import {DrawService} from '../../service/draw.service';
               <label for="moneyLimit">Limit pieniężny (0 oznacza brak limitu)</label>
             </div>
             <div class="input-field col s12">
-              <input id="wish" type="text"
-                     [(ngModel)]="wish" name="wish">
+              <input type="text" [(ngModel)]="wish" name="wish">
               <label for="wish">Twoje życzenie (co chciałbyś dostać od św Mikołaja?)</label>
             </div>
             <div class="col s12">

@@ -8,8 +8,6 @@ import {Component} from '@angular/core';
     <santa-participants-modal></santa-participants-modal>
     <santa-winner-modal></santa-winner-modal>
     <santa-new-draw-modal></santa-new-draw-modal>
-    <santa-video-modal></santa-video-modal>
-    <santa-message-modal></santa-message-modal>
   `
 })
 export class ModalsComponent {
