@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Draw} from '../model/draw.interface';
 import {DrawService} from '../service/draw.service';
-import {SnowService} from '../service/snow.service';
 import {AuthService} from '../service/auth.service';
 
 @Component({
@@ -33,7 +32,7 @@ export class DrawsComponent implements OnInit {
 
   private uid = '';
 
-  constructor(private drawService: DrawService, private snowService: SnowService, private authService: AuthService) {
+  constructor(private drawService: DrawService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -59,9 +58,6 @@ export class DrawsComponent implements OnInit {
                 this.userDraws = this.drawService.sortDraws(this.userDraws);
 
                 this.isLoading = false;
-                setTimeout(() => {
-                  this.snowService.updateSnow();
-                }, 500);
               });
         }
       });

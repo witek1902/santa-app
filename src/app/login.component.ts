@@ -1,8 +1,5 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from './service/auth.service';
-import {SnowService} from "./service/snow.service";
-
-declare var $: any;
 
 @Component({
   selector: 'santa-login',
@@ -15,19 +12,15 @@ declare var $: any;
         ></iframe>
         <div class="button-row">
           <a class="waves-effect waves-light btn-large social facebook" (click)="login()">
-            <i class="fa fa-facebook"></i> Sign in with facebook</a>
+            <i class="fa fa-facebook"></i> Zaloguj przez FB</a>
         </div>
       </div>
     </div>
   `
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent {
 
-  constructor(private authService: AuthService, private snowService: SnowService) {
-  }
-
-  ngAfterViewInit(): void {
-    this.snowService.updateSnow();
+  constructor(private authService: AuthService) {
   }
 
   login() {

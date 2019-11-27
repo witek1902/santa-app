@@ -11,7 +11,6 @@ import {DrawService} from './service/draw.service';
 import {MaterializeModule} from 'angular2-materialize';
 import {MainModule} from './main-panel/main.module';
 import {ModalsStream} from './main-panel/modals/modals.stream';
-import {SnowService} from './service/snow.service';
 import {MessageService} from './service/message.service';
 
 export const firebaseConfig = {
@@ -40,8 +39,7 @@ export const firebaseConfig = {
     AuthService,
     DrawService,
     ModalsStream,
-    MessageService,
-    SnowService
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

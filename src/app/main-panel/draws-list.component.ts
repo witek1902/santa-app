@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
-import {SnowService} from '../service/snow.service';
+import {Component, Input} from '@angular/core';
 import {Draw} from '../model/draw.interface';
 
 @Component({
@@ -33,18 +32,14 @@ import {Draw} from '../model/draw.interface';
     </div>
   `
 })
-export class DrawsListComponent implements AfterViewInit {
+export class DrawsListComponent {
   @Input() title = '';
   @Input() searchPlaceholder = '';
   @Input() draws: Draw[] = [];
   @Input() isLoading = true;
   public searchValue = '';
 
-  constructor(private snowService: SnowService) {
-  }
-
-  ngAfterViewInit(): void {
-    this.snowService.updateSnow();
+  constructor() {
   }
 
   public onSearch(searchValue: string) {
