@@ -6,10 +6,10 @@ import {Draw} from '../../model/draw.interface';
   selector: 'santa-draw-card-actions',
   template: `
     <div class="card-action">
-      <a *ngIf="canJoin" class="red-text darken-1 modal-trigger" (click)="joinToDraw()">Dołącz</a>
-      <a *ngIf="canDraw" class="red-text darken-1 modal-trigger" (click)="drawPairs()">Losuj!</a>
-      <a *ngIf="canSeeParticipants" class="red-text darken-1 modal-trigger" (click)="showParticipants()">Uczestnicy</a>
-      <a *ngIf="canSeeWinner" class="red-text darken-1 modal-trigger" (click)="showWinner()">Twój zwycięzca</a>
+      <a *ngIf="canJoin" class="red-text darken-1" (click)="joinToDraw()">Dołącz</a>
+      <a *ngIf="canDraw" class="red-text darken-1" (click)="drawPairs()">Losuj!</a>
+      <a *ngIf="canSeeParticipants" class="red-text darken-1" (click)="showParticipants()">Uczestnicy</a>
+      <a *ngIf="canSeeWinner" class="red-text darken-1" (click)="showWinner()">Twój zwycięzca</a>
     </div>
   `
 })

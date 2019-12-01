@@ -24,7 +24,6 @@ export abstract class BaseModal implements OnInit, OnDestroy {
     this.successMessage = '';
   }
 
-
   ngOnDestroy(): void {
     this.openModal$.unsubscribe();
   }
@@ -37,7 +36,7 @@ export abstract class BaseModal implements OnInit, OnDestroy {
   }
 
   public closeModal() {
-    this.modalActions.emit({action: 'modal', params: ['close']});
     $('.modal-overlay').remove();
+    this.modalActions.emit({action: 'modal', params: ['close']});
   }
 }

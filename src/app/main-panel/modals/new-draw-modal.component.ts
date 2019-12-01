@@ -60,8 +60,8 @@ import {DrawService} from '../../service/draw.service';
         </div>
       </div>
       <div class="modal-footer">
-        <a class="modal-action waves-effect waves-blue btn-flat" (click)="createNewDraw()">Stwórz</a>
         <a class="waves-effect waves-red btn-flat" (click)="closeModal()">Zamknij</a>
+        <a class="modal-action waves-effect waves-blue btn-flat" (click)="createNewDraw()">Stwórz</a>
       </div>
     </div>
   `

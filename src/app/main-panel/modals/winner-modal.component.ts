@@ -13,7 +13,7 @@ import {DrawService} from '../../service/draw.service';
       <div class="modal-content">
         <h4>{{draw?.name}}; Limit: {{draw?.moneyLimit || '-'}} zł</h4>
         <div class="winner-modal__winner-title">
-          <img [src]="winner?.photoURL" alt="" class="circle">
+          <img *ngIf="winner" [src]="winner?.photoURL" alt="" class="circle">
           <p>{{winner?.displayName}}</p>
         </div>
         <div class="winner-modal__winner-subtitle">
@@ -41,7 +41,9 @@ export class WinnerModalComponent extends BaseModal implements OnInit {
     this.openModal$ = this.modalsStream.getWinnerModalStream().subscribe(
       draw => {
         this.draw = draw;
-        this.drawService.getWinner(this.draw).then(winner => this.winner = winner);
+        this.drawService
+          .getWinner(this.draw)
+          .then(winner => this.winner = winner);
         this.openModal();
       }
     );
