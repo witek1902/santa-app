@@ -11,7 +11,6 @@ import {DrawService} from './service/draw.service';
 import {MaterializeModule} from 'angular2-materialize';
 import {MainModule} from './main-panel/main.module';
 import {ModalsStream} from './main-panel/modals/modals.stream';
-import {MessageService} from './service/message.service';
 
 export const firebaseConfig = {
   apiKey: environment.apiKey,
@@ -38,8 +37,7 @@ export const firebaseConfig = {
   providers: [
     AuthService,
     DrawService,
-    ModalsStream,
-    MessageService
+    ModalsStream
   ],
   bootstrap: [AppComponent]
 })
