@@ -12,9 +12,6 @@ import {DrawService} from '../../service/draw.service';
          [materializeActions]="modalActions">
       <div class="modal-content">
         <h4>{{draw?.name}}; Limit: {{draw?.moneyLimit || '-'}} zł</h4>
-        <iframe *ngIf="showWow" style="width: 100%;" height="315" width="420" frameborder="0"
-                src="https://www.youtube.com/embed/zqTwOoElxBA?rel=0&controls=0&showinfo=0&autoplay=1"
-        ></iframe>
         <div class="winner-modal__winner-title">
           <img [src]="winner?.photoURL" alt="" class="circle">
           <p>{{winner?.displayName}}</p>
@@ -32,7 +29,6 @@ import {DrawService} from '../../service/draw.service';
 export class WinnerModalComponent extends BaseModal implements OnInit {
 
   public draw: Draw;
-  public showWow = false;
   public winner: UserEntry;
 
   constructor(private modalsStream: ModalsStream, private drawService: DrawService) {
@@ -45,7 +41,6 @@ export class WinnerModalComponent extends BaseModal implements OnInit {
     this.openModal$ = this.modalsStream.getWinnerModalStream().subscribe(
       draw => {
         this.draw = draw;
-        this.showWow = true;
         this.drawService.getWinner(this.draw).then(winner => this.winner = winner);
         this.openModal();
       }
@@ -54,6 +49,5 @@ export class WinnerModalComponent extends BaseModal implements OnInit {
 
   closeModal() {
     super.closeModal();
-    this.showWow = false;
   }
 }
